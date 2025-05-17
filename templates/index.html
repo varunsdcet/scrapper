@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Google Scraper</title>
+  <title>Google & Bing Scraper</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -29,15 +29,64 @@
     .success {
       color: green;
     }
+    .error {
+      color: red;
+      display: none;
+      margin-top: 10px;
+    }
+    form {
+      margin-bottom: 20px;
+    }
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+    input[type="text"] {
+      padding: 8px;
+      width: 300px;
+      margin-bottom: 10px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+    }
+    button {
+      padding: 10px 20px;
+      background-color: #0b74de;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #095bb5;
+    }
+    .radio-group {
+      margin-bottom: 10px;
+    }
+    .radio-group label {
+      display: inline-block;
+      margin-right: 15px;
+      font-weight: normal;
+    }
+    .radio-group input[type="radio"] {
+      margin-right: 5px;
+    }
   </style>
 </head>
 <body>
-  <h1>Google Scraper</h1>
+  <h1>Google & Bing Scraper</h1>
 
-  <!-- Form to input keyword -->
-  <form action="/scrape" method="POST">
+  <!-- Form to input keyword and select search engine -->
+  <form action="/scrape" method="POST" id="scrape-form">
     <label for="keyword">Enter Keyword:</label>
     <input type="text" id="keyword" name="keyword" required>
+    <div class="radio-group">
+      <label>Select Search Engine:</label>
+      <input type="radio" id="google" name="engine" value="google" checked>
+      <label for="google">Google</label>
+      <input type="radio" id="bing" name="engine" value="bing">
+      <label for="bing">Bing</label>
+    </div>
     <button type="submit">Scrape</button>
   </form>
 
@@ -48,7 +97,7 @@
 
   <!-- Display scraped results with checkboxes -->
   {% if results %}
-    <form action="/send-email" method="POST">
+    <form action="/send-email" method="POST" id="email-form">
       <table>
         <thead>
           <tr>
@@ -65,7 +114,7 @@
           {% for item in results %}
             <tr>
               <td>
-                <input type="checkbox" name="selectedItems" value='{{ item | tojson }}'>
+                <input type="checkbox" name="selectedItems" value='{{ item | tojson | escape }}' data-emails="{{ item.emails }}">
               </td>
               <td>{{ item.rank }}</td>
               <td>{{ item.title }}</td>
@@ -77,8 +126,30 @@
           {% endfor %}
         </tbody>
       </table>
+      <p id="selection-error" class="error">Please select at least one item with a valid email address.</p>
       <button type="submit" style="margin-top: 20px;">Send Email</button>
     </form>
   {% endif %}
+
+  <script>
+    // Validate email form submission
+    document.getElementById('email-form').addEventListener('submit', function (event) {
+      const checkboxes = document.querySelectorAll('input[name="selectedItems"]:checked');
+      let hasValidEmail = false;
+      checkboxes.forEach(checkbox => {
+        const emails = checkbox.getAttribute('data-emails');
+        if (emails && emails !== 'None') {
+          hasValidEmail = true;
+        }
+      });
+
+      if (!checkboxes.length || !hasValidEmail) {
+        event.preventDefault();
+        document.getElementById('selection-error').style.display = 'block';
+      } else {
+        document.getElementById('selection-error').style.display = 'none';
+      }
+    });
+  </script>
 </body>
 </html>

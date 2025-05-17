@@ -1,0 +1,36 @@
+2025-05-17 20:07:19,039 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-05-17 20:07:19,040 - INFO - [33mPress CTRL+C to quit[0m
+2025-05-17 20:07:19,042 - INFO -  * Restarting with stat
+2025-05-17 20:07:19,430 - WARNING -  * Debugger is active!
+2025-05-17 20:07:19,443 - INFO -  * Debugger PIN: 821-690-654
+2025-05-17 20:07:27,482 - INFO - 127.0.0.1 - - [17/May/2025 20:07:27] "GET / HTTP/1.1" 200 -
+2025-05-17 20:07:31,712 - INFO - Starting scrape for Google query: varun singhal ios developer
+2025-05-17 20:07:31,712 - DEBUG - Using selector: KqueueSelector
+2025-05-17 20:07:33,348 - INFO - Navigating to: https://www.google.com/search?q=varun+singhal+ios+developer&gl=in&hl=en
+2025-05-17 20:07:35,094 - INFO - Found 9 results
+2025-05-17 20:07:35,136 - INFO - Visiting URL 1: https://in.linkedin.com/in/varunsinghal78
+2025-05-17 20:07:36,150 - INFO - Found 0 emails and 0 mobiles on https://in.linkedin.com/in/varunsinghal78
+2025-05-17 20:07:39,130 - INFO - Visiting URL 2: https://www.linkedin.com/in/varun-singhal-419217b0
+2025-05-17 20:07:41,881 - INFO - Visiting contact/about page: https://about.linkedin.com?trk=seo-authwall-base_footer-about
+2025-05-17 20:07:45,609 - INFO - Found 4 emails and 0 mobiles on https://www.linkedin.com/in/varun-singhal-419217b0
+2025-05-17 20:07:47,828 - INFO - Visiting URL 3: https://medium.com/@varun-singhal78/call-apply-bind-5eb7cd3f4d07
+2025-05-17 20:07:51,140 - INFO - Found 6 emails and 0 mobiles on https://medium.com/@varun-singhal78/call-apply-bind-5eb7cd3f4d07
+2025-05-17 20:07:56,040 - INFO - Visiting URL 4: https://rocketreach.co/varun-singhal-email_75810311
+2025-05-17 20:07:59,744 - INFO - Visiting contact/about page: https://rocketreach.co/resources/products/contact-database/
+2025-05-17 20:08:02,004 - INFO - Found 4 emails and 0 mobiles on https://rocketreach.co/varun-singhal-email_75810311
+2025-05-17 20:08:06,447 - INFO - Visiting URL 5: https://medium.com/@varun-singhal78/following
+2025-05-17 20:08:08,265 - INFO - Found 6 emails and 0 mobiles on https://medium.com/@varun-singhal78/following
+2025-05-17 20:08:11,603 - INFO - Visiting URL 6: https://aeroleads.com/in/varunsinghal78
+2025-05-17 20:08:13,710 - INFO - Found 3 emails and 0 mobiles on https://aeroleads.com/in/varunsinghal78
+2025-05-17 20:08:18,736 - INFO - Visiting URL 7: https://www.zoominfo.com/people/Varun/Singhal
+2025-05-17 20:08:22,769 - INFO - Found 0 emails and 0 mobiles on https://www.zoominfo.com/people/Varun/Singhal
+2025-05-17 20:08:25,735 - INFO - Visiting URL 8: https://www.emerton.co/our-people/varun-singhal
+2025-05-17 20:08:29,844 - INFO - Visiting contact/about page: https://www.emerton.co/our-people/varun-singhal/about
+2025-05-17 20:08:30,979 - INFO - Found 0 emails and 0 mobiles on https://www.emerton.co/our-people/varun-singhal
+2025-05-17 20:08:34,956 - INFO - Visiting URL 9: https://play.google.com/store/apps/datasafety?id=com.khatulivebooking&hl=en_IN
+2025-05-17 20:08:36,201 - INFO - Found 2 emails and 1 mobiles on https://play.google.com/store/apps/datasafety?id=com.khatulivebooking&hl=en_IN
+2025-05-17 20:08:38,825 - INFO - Browser closed after Google scraping
+2025-05-17 20:08:38,845 - INFO - 127.0.0.1 - - [17/May/2025 20:08:38] "POST /scrape HTTP/1.1" 200 -
+2025-05-17 20:10:59,745 - INFO -  * Detected change in '/Users/babashyam/Desktop/web-scraper/app.py', reloading
+2025-05-17 20:10:59,827 - INFO -  * Restarting with stat
