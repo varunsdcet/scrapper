@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Google Scraper</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+    }
+    th {
+      background-color: #f2f2f2;
+    }
+    .message {
+      color: red;
+      margin: 10px 0;
+    }
+    .success {
+      color: green;
+    }
+  </style>
+</head>
+<body>
+  <h1>Google Scraper</h1>
+
+  <!-- Form to input keyword -->
+  <form action="/scrape" method="POST">
+    <label for="keyword">Enter Keyword:</label>
+    <input type="text" id="keyword" name="keyword" required>
+    <button type="submit">Scrape</button>
+  </form>
+
+  <!-- Display message if any -->
+  {% if message %}
+    <p class="{{ 'message' if 'Error' in message else 'success' }}">{{ message }}</p>
+  {% endif %}
+
+  <!-- Display scraped results with checkboxes -->
+  {% if results %}
+    <form action="/send-email" method="POST">
+      <table>
+        <thead>
+          <tr>
+            <th>Select</th>
+            <th>Rank</th>
+            <th>Title</th>
+            <th>URL</th>
+            <th>Snippet</th>
+            <th>Emails</th>
+            <th>Mobile Numbers</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for item in results %}
+            <tr>
+              <td>
+                <input type="checkbox" name="selectedItems" value='{{ item | tojson }}'>
+              </td>
+              <td>{{ item.rank }}</td>
+              <td>{{ item.title }}</td>
+              <td><a href="{{ item.url }}" target="_blank">{{ item.url }}</a></td>
+              <td>{{ item.snippet }}</td>
+              <td>{{ item.emails }}</td>
+              <td>{{ item.mobiles }}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      <button type="submit" style="margin-top: 20px;">Send Email</button>
+    </form>
+  {% endif %}
+</body>
+</html>

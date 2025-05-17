@@ -1,0 +1,14 @@
+blinker==1.9.0
+click==8.2.0
+Flask==3.1.1
+greenlet==3.2.2
+itsdangerous==2.2.0
+Jinja2==3.1.6
+MarkupSafe==3.0.2
+playwright==1.52.0
+playwright-stealth==1.0.6
+pyee==13.0.0
+secure-smtplib==0.1.1
+setuptools==80.7.1
+typing_extensions==4.13.2
+Werkzeug==3.1.3
